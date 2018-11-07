@@ -30,36 +30,7 @@ float temp;
 float humid; 
 unsigned int sensorData[2];
 
-void getGas()
-{
-    //Check if data is ready with .dataAvailable
-    if(gasSensor.dataAvailable()){
 
-        //If so, have the sensor read and calculate the results
-        //Get them later
-
-        gasSensor.readAlgorithmResults();
-
-        CO2 = gasSensor.getCO2();
-        VOC = gasSensor.getTVOC();
-
-        Serial.print("CO2[");
-        //Return calculated C02 reading
-        Serial.print(CO2);
-        Serial.print("] tVOC[");
-        //Returns calculated TVOC reading
-        Serial.print(VOC);
-        Serial.print("] millis[");
-        //Simply the time since program start
-        Serial.print(millis());
-        Serial.print("]");
-        Serial.println();
-
-    }
-
-    delay(10);
-    
-}
 
 void getTnH()
 {
@@ -68,31 +39,7 @@ void getTnH()
 
 }
 
-void displayData()
-{
-      display.clearDisplay();
-    
 
-    display.setTextSize(1);
-    display.setTextColor(WHITE);
-
-    display.setCursor(0,0);
-      
-      //1st line of data
-      display.print("CO2: ");
-      display.print(CO2);
-      display.print(" VOC: ");
-      display.println(VOC);
-
-      //2nd line of data
-      display.print("Temp: ");
-      display.print(temp);
-      display.print(" Humidity: ");
-      display.println(humid);
-
-    
-    display.display();
-}
 
 void setup() {
   // put your setup code here, to run once:
@@ -154,3 +101,59 @@ displayData();
   delay(1000);
 }
 
+void getGas()
+{
+    //Check if data is ready with .dataAvailable
+    if(gasSensor.dataAvailable()){
+
+        //If so, have the sensor read and calculate the results
+        //Get them later
+
+        gasSensor.readAlgorithmResults();
+
+        CO2 = gasSensor.getCO2();
+        VOC = gasSensor.getTVOC();
+
+        Serial.print("CO2[");
+        //Return calculated C02 reading
+        Serial.print(CO2);
+        Serial.print("] tVOC[");
+        //Returns calculated TVOC reading
+        Serial.print(VOC);
+        Serial.print("] millis[");
+        //Simply the time since program start
+        Serial.print(millis());
+        Serial.print("]");
+        Serial.println();
+
+    }
+
+    delay(10);
+    
+}
+
+void displayData()
+{
+      display.clearDisplay();
+    
+
+    display.setTextSize(1);
+    display.setTextColor(WHITE);
+
+    display.setCursor(0,0);
+      
+      //1st line of data
+      display.print("CO2: ");
+      display.print(CO2);
+      display.print(" VOC: ");
+      display.println(VOC);
+
+      //2nd line of data
+      display.print("Temp: ");
+      display.print(temp);
+      display.print(" Humidity: ");
+      display.println(humid);
+
+    
+    display.display();
+}

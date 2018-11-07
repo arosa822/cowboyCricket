@@ -1,0 +1,5 @@
+#define TOKEN  "<your token>"
+#define WIFISSID  "<Your Wifi SSID>"
+#define PASSWORD  "<Your Wifi Password>"
+#define SOURCE_NAME  "Bin3"
+#define SOURCE_LABEL  "ESP3"
