@@ -1,0 +1,6 @@
+{
+    "terminal.integrated.env.linux": {
+        "PATH": "/home/alex/.platformio/penv/bin:/home/alex/.platformio/penv:/home/alex/anaconda3/bin:/home/alex/bin:/home/alex/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin:/home/alex/go/bin:/home/alex/Code/Grownetics/bin",
+        "PLATFORMIO_CALLER": "vscode"
+    }
+}
