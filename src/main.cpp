@@ -146,7 +146,7 @@ void displayData()
       
       //1st line of data
       display.print("Bin: ");
-      display.println(NAME);
+      display.println(LABEL_DEVICE);
 
       display.print("CO2: ");
       display.print(CO2);
