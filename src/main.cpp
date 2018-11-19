@@ -183,6 +183,7 @@ void debugDisplay(const char* theMessage)
 
 void postData(float theData, const char* theVARIABLE_LABEL)
 {
+  Serial.println("posting data...");
 
     char* body = (char *) malloc(sizeof(char) * 150);
     char* data = (char *) malloc(sizeof(char) * 300);
@@ -323,28 +324,22 @@ void loop()
 {
   unsigned long currentMillis = millis();
 
-  //read and store data from sensors
-  if (currentMillis - previousMillis >= readInt)
-  {
-    getTnH();
-    //temperature compensation for gas sensor
-    delay(100);
-    CCS811Core::status setEnvironmentalData(float humid, float temp );
-    getGas();
-    displayData();
-    getGasStatus();
-    
-    previousMillis = currentMillis;
-  }
 
   //post and get data from Unibidots
 
   if (currentMillis - previousMillis >= postInt)
   {
+    getTnH();
+    CCS811Core::status setEnvironmentalData(float humid, float temp );
     postData(humid,"Humidity");
     postData(temp,"Temperature");
+    getGas();
+    getGasStatus();
     postData(CO2,"CO2");
     postData(VOC, "VOC");
+    
+    displayData();
+
     response = GETRequest(LABEL_DEVICE, VARIABLE_LABEL,TOKEN);
 
     previousMillis = currentMillis;
